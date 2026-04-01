@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://gestor:gestor123@localhost:5432/gestor_milhas"
+      ],
+      "disabled": false,
+      "autoApprove": []
+    },
+    "insomnia": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-insomnia"
+      ],
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}
