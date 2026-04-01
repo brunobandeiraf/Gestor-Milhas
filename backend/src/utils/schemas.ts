@@ -129,6 +129,8 @@ export const cardSchema = z.object({
   brand: z.string().optional().nullable(),
   vipLounge: z.string().optional().nullable(),
   notes: z.string().optional().nullable(),
+  // Admin can create cards on behalf of another user
+  targetUserId: z.string().uuid({ message: "ID do usuário alvo inválido" }).optional(),
 });
 
 // --- Club Schema ---

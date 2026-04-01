@@ -8,6 +8,7 @@ import airlineRoutes from "./routes/airline.routes.js";
 import bankRoutes from "./routes/bank.routes.js";
 import programRoutes from "./routes/program.routes.js";
 import loyaltyAccountRoutes from "./routes/loyalty-account.routes.js";
+import cardRoutes from "./routes/card.routes.js";
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use("/api/airlines", airlineRoutes);
 app.use("/api/banks", bankRoutes);
 app.use("/api/programs", programRoutes);
 app.use("/api/loyalty-accounts", loyaltyAccountRoutes);
+app.use("/api/cards", cardRoutes);
 
 // Error handling middleware (must be registered after all routes)
 app.use(errorHandler);

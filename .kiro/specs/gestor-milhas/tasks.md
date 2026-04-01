@@ -133,8 +133,8 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - **Propriedade 10: Invariante do preço médio**
     - **Valida: Requisitos 5.2, 5.3, 7.4, 8.6, 9.5**
 
-- [ ] 8. Cartões de crédito
-  - [ ] 8.1 Implementar service, rotas e controller de cartões
+- [x] 8. Cartões de crédito
+  - [x] 8.1 Implementar service, rotas e controller de cartões
     - CRUD completo com campos de Admin condicionais
     - Rotas: `CRUD /api/cards`
     - _Requisitos: 6.1, 6.2, 6.3, 6.4_
