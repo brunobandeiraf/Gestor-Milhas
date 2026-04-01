@@ -1,11 +1,25 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PublicLayout from "./components/PublicLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedLayout from "./components/ProtectedLayout";
 import LandingPage from "./pages/LandingPage";
 import FeaturesPage from "./pages/FeaturesPage";
 import ContactPage from "./pages/ContactPage";
 import LoginPage from "./pages/LoginPage";
 import CompleteRegistrationPage from "./pages/CompleteRegistrationPage";
+import DashboardPage from "./pages/DashboardPage";
+import LoyaltyAccountsPage from "./pages/LoyaltyAccountsPage";
+import CardsPage from "./pages/CardsPage";
+import ClubsPage from "./pages/ClubsPage";
+import TransactionsPage from "./pages/TransactionsPage";
+import BonusPurchasesPage from "./pages/BonusPurchasesPage";
+import TransfersPage from "./pages/TransfersPage";
+import IssuancesPage from "./pages/IssuancesPage";
+import SchedulesPage from "./pages/SchedulesPage";
+import AdminDashboardPage from "./pages/AdminDashboardPage";
+import AdminUsersPage from "./pages/AdminUsersPage";
+import AdminCatalogsPage from "./pages/AdminCatalogsPage";
+import AdminProgramsPage from "./pages/AdminProgramsPage";
 
 export const AppRoutes = () => {
   return (
@@ -25,18 +39,25 @@ export const AppRoutes = () => {
 
       {/* Protected routes — requires COMPLETE registration */}
       <Route element={<ProtectedRoute />}>
-        <Route path="/dashboard" element={<DashboardPlaceholder />} />
+        <Route element={<ProtectedLayout />}>
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/contas" element={<LoyaltyAccountsPage />} />
+          <Route path="/cartoes" element={<CardsPage />} />
+          <Route path="/clubes" element={<ClubsPage />} />
+          <Route path="/movimentacoes" element={<TransactionsPage />} />
+          <Route path="/compras-bonificadas" element={<BonusPurchasesPage />} />
+          <Route path="/transferencias" element={<TransfersPage />} />
+          <Route path="/emissoes" element={<IssuancesPage />} />
+          <Route path="/agendamentos" element={<SchedulesPage />} />
+          <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
+          <Route path="/admin/usuarios" element={<AdminUsersPage />} />
+          <Route path="/admin/catalogos" element={<AdminCatalogsPage />} />
+          <Route path="/admin/programas" element={<AdminProgramsPage />} />
+        </Route>
       </Route>
     </Routes>
   );
 };
-
-const DashboardPlaceholder = () => (
-  <div className="py-20 text-center">
-    <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-    <p className="text-gray-600 mt-2">Área protegida será implementada em breve.</p>
-  </div>
-);
 
 const App = () => {
   return (

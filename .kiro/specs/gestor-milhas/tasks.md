@@ -326,74 +326,74 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - Validação de CPF e email no frontend
     - _Requisitos: 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 1.5_
 
-- [ ] 21. Frontend — Área do usuário
-  - [ ] 21.1 Implementar DashboardPage do usuário
+- [x] 21. Frontend — Área do usuário
+  - [x] 21.1 Implementar DashboardPage do usuário
     - Total de milhas por programa, preço médio, total investido, total economizado, próximos recebimentos
     - Hooks: `useUserDashboardQuery`
     - _Requisitos: 13.1, 13.2, 13.3, 13.4, 13.5_
 
-  - [ ] 21.2 Implementar LoyaltyAccountsPage
+  - [x] 21.2 Implementar LoyaltyAccountsPage
     - Lista de contas de fidelidade com saldo, preço médio e CPFs disponíveis
     - Hooks: `useLoyaltyAccountsQuery`
     - _Requisitos: 5.1, 5.4_
 
-  - [ ] 21.3 Implementar CardsPage
+  - [x] 21.3 Implementar CardsPage
     - CRUD de cartões com formulário React Hook Form + Zod (`cardSchema`)
     - Hooks: `useCardsQuery`, `useCreateCardMutation`, `useUpdateCardMutation`
     - _Requisitos: 6.1, 6.3, 6.4_
 
-  - [ ] 21.4 Implementar ClubsPage
+  - [x] 21.4 Implementar ClubsPage
     - CRUD de clubes com formulário React Hook Form + Zod (`clubSchema`)
     - Hooks: `useClubsQuery`, `useCreateClubMutation`
     - _Requisitos: 7.1_
 
-  - [ ] 21.5 Implementar TransactionsPage
+  - [x] 21.5 Implementar TransactionsPage
     - Registro de movimentação com toggle VM/VT e listagem
     - Hooks: `useTransactionsQuery`, `useCreateTransactionMutation`
     - _Requisitos: 8.1, 8.2, 8.3, 8.4_
 
-  - [ ] 21.6 Implementar BonusPurchasesPage
+  - [x] 21.6 Implementar BonusPurchasesPage
     - Registro e listagem de compras bonificadas
     - Hooks: `useBonusPurchasesQuery`, `useCreateBonusPurchaseMutation`
     - _Requisitos: 9.1_
 
-  - [ ] 21.7 Implementar TransfersPage
+  - [x] 21.7 Implementar TransfersPage
     - Registro de transferência com campos condicionais (bônus, carrinho, bumerangue) e listagem
     - Hooks: `useTransfersQuery`, `useCreateTransferMutation`
     - _Requisitos: 10.1, 10.4, 10.7, 10.8_
 
-  - [ ] 21.8 Implementar IssuancesPage
+  - [x] 21.8 Implementar IssuancesPage
     - Registro de emissão com cálculo de custo total e economia, e listagem
     - Hooks: `useIssuancesQuery`, `useCreateIssuanceMutation`
     - _Requisitos: 11.1, 11.4, 11.5_
 
-  - [ ] 21.9 Implementar SchedulesPage
+  - [x] 21.9 Implementar SchedulesPage
     - Listagem de agendamentos pendentes com data prevista e tipo
     - Hooks: `useSchedulesQuery`
     - _Requisitos: 12.6_
 
-- [ ] 22. Frontend — Área do Admin
-  - [ ] 22.1 Implementar AdminUsersPage
+- [x] 22. Frontend — Área do Admin
+  - [x] 22.1 Implementar AdminUsersPage
     - Criar usuário, listar usuários gerenciados, visualizar detalhes
     - Hooks: `useUsersQuery`, `useCreateUserMutation`
     - _Requisitos: 1.2, 1.3, 1.7_
 
-  - [ ] 22.2 Implementar AdminCatalogsPage
+  - [x] 22.2 Implementar AdminCatalogsPage
     - CRUD de companhias aéreas e bancos com soft delete
     - Hooks: `useAirlinesQuery`, `useBanksQuery` e mutations correspondentes
     - _Requisitos: 16.1, 16.2, 16.3, 16.4_
 
-  - [ ] 22.3 Implementar AdminProgramsPage
+  - [x] 22.3 Implementar AdminProgramsPage
     - CRUD de programas com validação condicional por tipo
     - Hooks: `useProgramsQuery`, `useCreateProgramMutation`
     - _Requisitos: 4.1, 4.2, 4.3, 4.4, 4.5_
 
-  - [ ] 22.4 Implementar AdminDashboardPage
+  - [x] 22.4 Implementar AdminDashboardPage
     - Economia total, economia global, lista de usuários com resumo, drill-down por usuário
     - Hooks: `useAdminDashboardQuery`
     - _Requisitos: 14.1, 14.2, 14.3, 14.4, 15.2_
 
-- [ ] 23. Checkpoint final — Ensure all tests pass
+- [x] 23. Checkpoint final — Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
 ## Notas
