@@ -43,20 +43,20 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
 - [x] 2. Checkpoint — Infraestrutura base
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 3. Autenticação e controle de acesso
-  - [ ] 3.1 Implementar AuthService (login e refresh token)
+- [x] 3. Autenticação e controle de acesso
+  - [x] 3.1 Implementar AuthService (login e refresh token)
     - Implementar `login(email, password)` com bcrypt e geração de JWT (access + refresh)
     - Implementar `refresh(refreshToken)` para renovação de token
     - _Requisitos: 1.1_
 
-  - [ ] 3.2 Implementar middleware de autenticação e autorização
+  - [x] 3.2 Implementar middleware de autenticação e autorização
     - Middleware `authenticate` que valida JWT e injeta `userId` e `role` no request
     - Middleware `authorize(roles)` para verificação de role
     - Middleware `requireCompleteRegistration` que bloqueia usuários PENDING
     - Middleware `ownerOrAdmin` que garante isolamento de dados entre usuários
     - _Requisitos: 1.4, 1.5, 1.6, 1.7_
 
-  - [ ] 3.3 Implementar rotas e controller de autenticação
+  - [x] 3.3 Implementar rotas e controller de autenticação
     - `POST /api/auth/login` e `POST /api/auth/refresh`
     - _Requisitos: 1.1_
 
@@ -76,14 +76,14 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - **Propriedade 1: Usuários criados por Admin iniciam com status PENDING**
     - **Valida: Requisitos 1.3, 1.4, 1.5**
 
-- [ ] 4. Gestão de usuários
-  - [ ] 4.1 Implementar UserService
+- [x] 4. Gestão de usuários
+  - [x] 4.1 Implementar UserService
     - `create(data)` — Admin cria usuário com status PENDING
     - `completeRegistration(userId, data)` — Usuário completa cadastro (dados pessoais + endereço)
     - `findById(id)` e `findAll(adminId)`
     - _Requisitos: 1.2, 1.3, 3.1, 3.2_
 
-  - [ ] 4.2 Implementar rotas e controller de usuários
+  - [x] 4.2 Implementar rotas e controller de usuários
     - `POST /api/users` (Admin), `GET /api/users` (Admin), `GET /api/users/:id` (Admin)
     - `PUT /api/users/:id/complete-registration` (Usuário)
     - _Requisitos: 1.2, 1.3, 3.1, 3.2_
