@@ -182,8 +182,8 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
 - [x] 11. Checkpoint — Movimentações básicas
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 12. Transferências
-  - [ ] 12.1 Implementar TransferService
+- [x] 12. Transferências
+  - [x] 12.1 Implementar TransferService
     - `create(userId, data)` — registrar transferência
     - Débito imediato no programa de origem via `LoyaltyAccountService.debit`
     - Criar agendamento `TRANSFER_CREDIT` com data = `receiveDate`
@@ -194,7 +194,7 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - Tudo dentro de `prisma.$transaction()`
     - _Requisitos: 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 10.8_
 
-  - [ ] 12.2 Implementar rotas e controller de transferências
+  - [x] 12.2 Implementar rotas e controller de transferências
     - `POST /api/transfers`, `GET /api/transfers`
     - _Requisitos: 10.1_
 

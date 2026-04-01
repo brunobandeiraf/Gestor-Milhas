@@ -11,6 +11,7 @@ import loyaltyAccountRoutes from "./routes/loyalty-account.routes.js";
 import cardRoutes from "./routes/card.routes.js";
 import transactionRoutes from "./routes/transaction.routes.js";
 import bonusPurchaseRoutes from "./routes/bonus-purchase.routes.js";
+import transferRoutes from "./routes/transfer.routes.js";
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ app.use("/api/loyalty-accounts", loyaltyAccountRoutes);
 app.use("/api/cards", cardRoutes);
 app.use("/api/transactions", transactionRoutes);
 app.use("/api/bonus-purchases", bonusPurchaseRoutes);
+app.use("/api/transfers", transferRoutes);
 
 // Error handling middleware (must be registered after all routes)
 app.use(errorHandler);
