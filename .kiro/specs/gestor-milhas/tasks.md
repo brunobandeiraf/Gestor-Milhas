@@ -214,8 +214,8 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - **Propriedade 17: Bumerangue cria agendamento de retorno**
     - **Valida: Requisito 10.8**
 
-- [ ] 13. Emissão de passagens
-  - [ ] 13.1 Implementar IssuanceService
+- [x] 13. Emissão de passagens
+  - [x] 13.1 Implementar IssuanceService
     - `create(userId, data)` — registrar emissão
     - Calcular `totalCost = (milesUsed / 1000 * averagePrice) + cashPaid`
     - Calcular `savings = realTicketValue - totalCost`
@@ -226,7 +226,7 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - Tudo dentro de `prisma.$transaction()`
     - _Requisitos: 11.1, 11.2, 11.3, 11.4, 11.5, 11.6, 11.7_
 
-  - [ ] 13.2 Implementar rotas e controller de emissões
+  - [x] 13.2 Implementar rotas e controller de emissões
     - `POST /api/issuances`, `GET /api/issuances`
     - _Requisitos: 11.1_
 
@@ -234,25 +234,25 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - **Propriedade 18: Cálculos de emissão**
     - **Valida: Requisitos 11.1, 11.2, 11.3, 11.4, 11.5**
 
-- [ ] 14. Clubes de milhas e sistema de agendamentos
-  - [ ] 14.1 Implementar ClubService
+- [x] 14. Clubes de milhas e sistema de agendamentos
+  - [x] 14.1 Implementar ClubService
     - `create(userId, data)` — registrar clube e gerar agendamentos mensais `CLUB_CHARGE`
     - `processMonthlyCharge(clubId, tx)` — creditar milhas e criar pagamento
     - Gerar agendamentos entre `startDate` e `endDate` baseados no `chargeDay`
     - _Requisitos: 7.1, 7.2, 7.3, 7.5, 7.6, 7.7_
 
-  - [ ] 14.2 Implementar ScheduleService
+  - [x] 14.2 Implementar ScheduleService
     - `getPending(userId)` — listar agendamentos pendentes
     - `processDaily()` — cron job que busca agendamentos com `executionDate <= hoje` e status PENDING
     - `execute(scheduleId, tx)` — executar operação conforme `ScheduleType` (club charge, bonus credit, transfer credit, transfer bonus credit, boomerang return)
     - Marcar como COMPLETED em caso de sucesso, registrar erro e manter PENDING em caso de falha
     - _Requisitos: 12.1, 12.2, 12.3, 12.4, 12.5, 12.6_
 
-  - [ ] 14.3 Implementar rotas e controllers de clubes e agendamentos
+  - [x] 14.3 Implementar rotas e controllers de clubes e agendamentos
     - `CRUD /api/clubs`, `GET /api/schedules`
     - _Requisitos: 7.1, 12.6_
 
-  - [ ] 14.4 Configurar cron job diário (timezone America/Sao_Paulo)
+  - [x] 14.4 Configurar cron job diário (timezone America/Sao_Paulo)
     - Usar `node-cron` ou similar para executar `ScheduleService.processDaily()` diariamente
     - _Requisitos: 12.2_
 
@@ -264,11 +264,11 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - **Propriedade 20: Agendamentos de clube**
     - **Valida: Requisitos 7.1, 7.2, 7.3, 7.5, 7.6, 7.7**
 
-- [ ] 15. Checkpoint — Backend completo
+- [x] 15. Checkpoint — Backend completo
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 16. Formulário de contato (página pública)
-  - [ ] 16.1 Implementar service e rota de contato
+- [x] 16. Formulário de contato (página pública)
+  - [x] 16.1 Implementar service e rota de contato
     - `POST /api/contact` — persistir mensagem no banco (model `ContactMessage`)
     - Validação via `contactFormSchema`
     - _Requisitos: 2.5, 2.6_
@@ -277,13 +277,13 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - **Propriedade 5: Formulário de contato — persistência e validação**
     - **Valida: Requisitos 2.5, 2.6**
 
-- [ ] 17. Dashboard e métricas
-  - [ ] 17.1 Implementar DashboardService
+- [x] 17. Dashboard e métricas
+  - [x] 17.1 Implementar DashboardService
     - `getUserDashboard(userId)` — total milhas por programa, preço médio, total investido, total economizado, próximos recebimentos
     - `getAdminDashboard(adminId)` — economia total dos gerenciados, economia global, lista de usuários com resumo
     - _Requisitos: 13.1, 13.2, 13.3, 13.4, 13.5, 14.1, 14.2, 14.3, 14.4, 15.1, 15.2, 15.3_
 
-  - [ ] 17.2 Implementar rotas e controllers de dashboard e métricas
+  - [x] 17.2 Implementar rotas e controllers de dashboard e métricas
     - `GET /api/dashboard/user`, `GET /api/dashboard/admin`, `GET /api/metrics/user/:id`
     - _Requisitos: 13.1, 14.1, 15.1_
 
@@ -295,32 +295,32 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - **Propriedade 23: Consistência do dashboard do Admin**
     - **Valida: Requisitos 14.1, 14.2**
 
-- [ ] 18. Checkpoint — Backend + API completa
+- [x] 18. Checkpoint — Backend + API completa
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 19. Frontend — Setup e páginas públicas
-  - [ ] 19.1 Configurar shadcn/ui, React Router, React Query provider e layout base
+- [x] 19. Frontend — Setup e páginas públicas
+  - [x] 19.1 Configurar shadcn/ui, React Router, React Query provider e layout base
     - Instalar e configurar shadcn/ui
     - Configurar React Router com rotas públicas e protegidas
     - Criar layout base com header (botão login no canto superior direito) e footer
     - Configurar React Query client
     - _Requisitos: 2.4_
 
-  - [ ] 19.2 Implementar páginas públicas (Landing, Funcionalidades, Contato)
+  - [x] 19.2 Implementar páginas públicas (Landing, Funcionalidades, Contato)
     - `LandingPage` — apresentação do sistema e benefícios
     - `FeaturesPage` — explicação das funcionalidades
     - `ContactPage` — formulário de contato com React Hook Form + Zod (`contactFormSchema`)
     - Mensagens de UI em português BR
     - _Requisitos: 2.1, 2.2, 2.3, 2.5, 2.6_
 
-- [ ] 20. Frontend — Autenticação e cadastro
-  - [ ] 20.1 Implementar LoginPage e fluxo de autenticação
+- [x] 20. Frontend — Autenticação e cadastro
+  - [x] 20.1 Implementar LoginPage e fluxo de autenticação
     - Formulário de login com React Hook Form + Zod
     - Armazenar tokens (access + refresh) e configurar interceptor para refresh automático
     - Redirect para complete-registration se status PENDING
     - _Requisitos: 1.1, 1.4_
 
-  - [ ] 20.2 Implementar CompleteRegistrationPage
+  - [x] 20.2 Implementar CompleteRegistrationPage
     - Wizard com dados pessoais (nome, CPF, nascimento, email, telefone) e endereço (CEP, estado, cidade, rua, número, complemento, bairro)
     - Componente `CepAutoComplete` — consulta ViaCEP e preenche campos automaticamente
     - Validação de CPF e email no frontend

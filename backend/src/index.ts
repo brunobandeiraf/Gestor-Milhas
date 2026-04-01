@@ -12,6 +12,12 @@ import cardRoutes from "./routes/card.routes.js";
 import transactionRoutes from "./routes/transaction.routes.js";
 import bonusPurchaseRoutes from "./routes/bonus-purchase.routes.js";
 import transferRoutes from "./routes/transfer.routes.js";
+import issuanceRoutes from "./routes/issuance.routes.js";
+import clubRoutes from "./routes/club.routes.js";
+import scheduleRoutes from "./routes/schedule.routes.js";
+import contactRoutes from "./routes/contact.routes.js";
+import dashboardRoutes from "./routes/dashboard.routes.js";
+import { startScheduleCron } from "./cron/schedule-processor.js";
 
 dotenv.config();
 
@@ -35,6 +41,11 @@ app.use("/api/cards", cardRoutes);
 app.use("/api/transactions", transactionRoutes);
 app.use("/api/bonus-purchases", bonusPurchaseRoutes);
 app.use("/api/transfers", transferRoutes);
+app.use("/api/issuances", issuanceRoutes);
+app.use("/api/clubs", clubRoutes);
+app.use("/api/schedules", scheduleRoutes);
+app.use("/api/contact", contactRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 // Error handling middleware (must be registered after all routes)
 app.use(errorHandler);
@@ -43,6 +54,7 @@ app.use(errorHandler);
 if (process.env.NODE_ENV !== "test") {
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+    startScheduleCron();
   });
 }
 
