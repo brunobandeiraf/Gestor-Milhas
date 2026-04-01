@@ -143,8 +143,8 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - **Propriedade 21: CRUD de cartões — round trip**
     - **Valida: Requisitos 6.1, 6.2, 6.3, 6.4**
 
-- [ ] 9. Movimentações — Compra de pontos
-  - [ ] 9.1 Implementar TransactionService
+- [x] 9. Movimentações — Compra de pontos
+  - [x] 9.1 Implementar TransactionService
     - `create(userId, data)` — registrar movimentação com conversão VM ↔ VT
     - Creditar milhas na conta de fidelidade via `LoyaltyAccountService.credit`
     - Recalcular preço médio via `AveragePriceService.recalculate`
@@ -152,7 +152,7 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - Tudo dentro de `prisma.$transaction()`
     - _Requisitos: 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7_
 
-  - [ ] 9.2 Implementar rotas e controller de movimentações
+  - [x] 9.2 Implementar rotas e controller de movimentações
     - `POST /api/transactions`, `GET /api/transactions`
     - _Requisitos: 8.1_
 
@@ -164,14 +164,14 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - **Propriedade 12: Movimentação atualiza saldo e cria pagamento**
     - **Valida: Requisitos 8.1, 8.5, 8.7**
 
-- [ ] 10. Movimentações — Compra bonificada
-  - [ ] 10.1 Implementar BonusPurchaseService
+- [x] 10. Movimentações — Compra bonificada
+  - [x] 10.1 Implementar BonusPurchaseService
     - `create(userId, data)` — registrar compra bonificada
     - Calcular pontos: `pointsPerReal * totalValue`
     - Criar agendamento `BONUS_PURCHASE_CREDIT` com data = `pointsReceiveDate`
     - _Requisitos: 9.1, 9.2, 9.3_
 
-  - [ ] 10.2 Implementar rotas e controller de compras bonificadas
+  - [x] 10.2 Implementar rotas e controller de compras bonificadas
     - `POST /api/bonus-purchases`, `GET /api/bonus-purchases`
     - _Requisitos: 9.1_
 
@@ -179,7 +179,7 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - **Propriedade 13: Cálculo de pontos de compra bonificada**
     - **Valida: Requisitos 9.1, 9.2, 9.3**
 
-- [ ] 11. Checkpoint — Movimentações básicas
+- [x] 11. Checkpoint — Movimentações básicas
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 12. Transferências

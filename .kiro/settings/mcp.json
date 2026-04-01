@@ -17,7 +17,12 @@
         "mcp-insomnia"
       ],
       "disabled": false,
-      "autoApprove": []
+      "autoApprove": [
+        "create_request_in_collection",
+        "create_request_in_collection",
+        "update_request",
+        "list_requests"
+      ]
     }
   }
 }

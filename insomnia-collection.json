@@ -1,0 +1,712 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-04-01T14:22:31.828Z",
+  "__export_source": "mcp-insomnia",
+  "resources": [
+    {
+      "_id": "wrk_70fe4c4d43ba4ff29164fafb0ac163b0",
+      "_type": "workspace",
+      "name": "Gestor Milhas API",
+      "description": "API REST do sistema Gestor Milhas — gestão de milhas e pontos de programas de fidelidade",
+      "scope": "collection",
+      "modified": 1775051934565,
+      "created": 1775051934565
+    },
+    {
+      "_id": "fld_b8d1c127aa3f41e2a78eec1804fc0ccc",
+      "_type": "request_group",
+      "parentId": "wrk_70fe4c4d43ba4ff29164fafb0ac163b0",
+      "name": "Auth",
+      "description": "Autenticação — login e refresh token",
+      "modified": 1775051957330,
+      "created": 1775051957330
+    },
+    {
+      "_id": "fld_1483488513c84f1583ed2eda6f592b1d",
+      "_type": "request_group",
+      "parentId": "wrk_70fe4c4d43ba4ff29164fafb0ac163b0",
+      "name": "Users",
+      "description": "Gestão de usuários (Admin + completar cadastro)",
+      "modified": 1775051963566,
+      "created": 1775051963566
+    },
+    {
+      "_id": "fld_055a16439126456bba32e793ae95a455",
+      "_type": "request_group",
+      "parentId": "wrk_70fe4c4d43ba4ff29164fafb0ac163b0",
+      "name": "Airlines",
+      "description": "CRUD de companhias aéreas (Admin)",
+      "modified": 1775051964987,
+      "created": 1775051964987
+    },
+    {
+      "_id": "fld_4330956ea287490cb768c0f0d1766fb9",
+      "_type": "request_group",
+      "parentId": "wrk_70fe4c4d43ba4ff29164fafb0ac163b0",
+      "name": "Banks",
+      "description": "CRUD de bancos (Admin)",
+      "modified": 1775051965827,
+      "created": 1775051965827
+    },
+    {
+      "_id": "fld_3a3fe849948845b3836d6032eb088c06",
+      "_type": "request_group",
+      "parentId": "wrk_70fe4c4d43ba4ff29164fafb0ac163b0",
+      "name": "Programs",
+      "description": "CRUD de programas de fidelidade (Admin)",
+      "modified": 1775051966430,
+      "created": 1775051966430
+    },
+    {
+      "_id": "fld_68596e5c0e7a49b289b1913de3d628ee",
+      "_type": "request_group",
+      "parentId": "wrk_70fe4c4d43ba4ff29164fafb0ac163b0",
+      "name": "Loyalty Accounts",
+      "description": "Contas de fidelidade do usuário",
+      "modified": 1775051967013,
+      "created": 1775051967013
+    },
+    {
+      "_id": "fld_5ee00d72f7fb43b8a417188226c6cd01",
+      "_type": "request_group",
+      "parentId": "wrk_70fe4c4d43ba4ff29164fafb0ac163b0",
+      "name": "Cards",
+      "description": "CRUD de cartões de crédito",
+      "modified": 1775051967592,
+      "created": 1775051967592
+    },
+    {
+      "_id": "req_6c90ffe3be22432b977cbeec8c40530f",
+      "_type": "request",
+      "parentId": "fld_b8d1c127aa3f41e2a78eec1804fc0ccc",
+      "name": "Login",
+      "description": "",
+      "url": "http://localhost:3000/api/auth/login",
+      "method": "POST",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parameters": [],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"admin@gestormilhas.com\",\n  \"password\": \"admin123\"\n}"
+      },
+      "modified": 1775052631784,
+      "created": 1775051976676
+    },
+    {
+      "_id": "req_436c9c148c914b8989feca8c79a33806",
+      "_type": "request",
+      "parentId": "fld_b8d1c127aa3f41e2a78eec1804fc0ccc",
+      "name": "Refresh Token",
+      "description": "",
+      "url": "http://localhost:3000/api/auth/refresh",
+      "method": "POST",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "parameters": [],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"refreshToken\": \"YOUR_REFRESH_TOKEN\"\n}"
+      },
+      "modified": 1775052644927,
+      "created": 1775051977863
+    },
+    {
+      "_id": "req_cb49daa52ad14742b0105e80605ce63f",
+      "_type": "request",
+      "parentId": "fld_1483488513c84f1583ed2eda6f592b1d",
+      "name": "Create User (Admin)",
+      "description": "",
+      "url": "http://localhost:3000/api/users",
+      "method": "POST",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"usuario@example.com\",\n  \"password\": \"senha123\"\n}"
+      },
+      "modified": 1775053236226,
+      "created": 1775051985779
+    },
+    {
+      "_id": "req_ac0a05762da3454c9f32fbc7620805b4",
+      "_type": "request",
+      "parentId": "fld_1483488513c84f1583ed2eda6f592b1d",
+      "name": "List Users (Admin)",
+      "description": "",
+      "url": "http://localhost:3000/api/users",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "modified": 1775053239229,
+      "created": 1775051988429
+    },
+    {
+      "_id": "req_9091bfbab31e4173b4855e8bef339e7e",
+      "_type": "request",
+      "parentId": "fld_1483488513c84f1583ed2eda6f592b1d",
+      "name": "Get User (Admin)",
+      "description": "",
+      "url": "http://localhost:3000/api/users/:id",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "modified": 1775053242293,
+      "created": 1775051992559
+    },
+    {
+      "_id": "req_984a05a144ae44889b8fa1b8e3b6bf5a",
+      "_type": "request",
+      "parentId": "fld_1483488513c84f1583ed2eda6f592b1d",
+      "name": "Complete Registration",
+      "description": "",
+      "url": "http://localhost:3000/api/users/:id/complete-registration",
+      "method": "PUT",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"fullName\": \"João Silva\",\n  \"cpf\": \"52998224725\",\n  \"birthDate\": \"1990-01-15T00:00:00.000Z\",\n  \"email\": \"joao@example.com\",\n  \"phone\": \"11999999999\",\n  \"zipCode\": \"01001000\",\n  \"state\": \"SP\",\n  \"city\": \"São Paulo\",\n  \"street\": \"Rua Exemplo\",\n  \"number\": \"123\",\n  \"complement\": \"Apto 42\",\n  \"neighborhood\": \"Centro\"\n}"
+      },
+      "modified": 1775053245750,
+      "created": 1775051997847
+    },
+    {
+      "_id": "req_fd754258da334211979282d34fe51a4e",
+      "_type": "request",
+      "parentId": "fld_055a16439126456bba32e793ae95a455",
+      "name": "Create Airline",
+      "description": "",
+      "url": "http://localhost:3000/api/airlines",
+      "method": "POST",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"LATAM Airlines\"\n}"
+      },
+      "modified": 1775053253930,
+      "created": 1775052005383
+    },
+    {
+      "_id": "req_89ab2471e9fd4ac49ef115b2fd6a7beb",
+      "_type": "request",
+      "parentId": "fld_055a16439126456bba32e793ae95a455",
+      "name": "List Airlines",
+      "description": "",
+      "url": "http://localhost:3000/api/airlines",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "modified": 1775053257192,
+      "created": 1775052006085
+    },
+    {
+      "_id": "req_fc114addded5416383d4cd113d1fbd5a",
+      "_type": "request",
+      "parentId": "fld_055a16439126456bba32e793ae95a455",
+      "name": "Get Airline",
+      "description": "",
+      "url": "http://localhost:3000/api/airlines/:id",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "modified": 1775053261837,
+      "created": 1775052007496
+    },
+    {
+      "_id": "req_2aa4d47313f14f64b73c46e2ae64e986",
+      "_type": "request",
+      "parentId": "fld_055a16439126456bba32e793ae95a455",
+      "name": "Update Airline",
+      "description": "",
+      "url": "http://localhost:3000/api/airlines/:id",
+      "method": "PUT",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"LATAM Airlines Brasil\"\n}"
+      },
+      "modified": 1775053264508,
+      "created": 1775052009377
+    },
+    {
+      "_id": "req_62fafbb716554dcbb651245f126fe885",
+      "_type": "request",
+      "parentId": "fld_055a16439126456bba32e793ae95a455",
+      "name": "Deactivate Airline",
+      "description": "",
+      "url": "http://localhost:3000/api/airlines/:id/deactivate",
+      "method": "PATCH",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "modified": 1775053267263,
+      "created": 1775052010865
+    },
+    {
+      "_id": "req_e2b53e7a3c24499a8b7614ba441f0c77",
+      "_type": "request",
+      "parentId": "fld_4330956ea287490cb768c0f0d1766fb9",
+      "name": "Create Bank",
+      "description": "",
+      "url": "http://localhost:3000/api/banks",
+      "method": "POST",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Itaú Unibanco\"\n}"
+      },
+      "modified": 1775053275010,
+      "created": 1775052017423
+    },
+    {
+      "_id": "req_f96a3c715be04d1eb07390984033e423",
+      "_type": "request",
+      "parentId": "fld_4330956ea287490cb768c0f0d1766fb9",
+      "name": "List Banks",
+      "description": "",
+      "url": "http://localhost:3000/api/banks",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "modified": 1775053278300,
+      "created": 1775052018707
+    },
+    {
+      "_id": "req_5f54e46478704a2fa6ffa8da4be3677c",
+      "_type": "request",
+      "parentId": "fld_4330956ea287490cb768c0f0d1766fb9",
+      "name": "Get Bank",
+      "description": "",
+      "url": "http://localhost:3000/api/banks/:id",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "modified": 1775053281746,
+      "created": 1775052020188
+    },
+    {
+      "_id": "req_a25708749389433d9f1d3e02c9a1bf78",
+      "_type": "request",
+      "parentId": "fld_4330956ea287490cb768c0f0d1766fb9",
+      "name": "Update Bank",
+      "description": "",
+      "url": "http://localhost:3000/api/banks/:id",
+      "method": "PUT",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Itaú Unibanco S.A.\"\n}"
+      },
+      "modified": 1775053285207,
+      "created": 1775052022326
+    },
+    {
+      "_id": "req_0de8c59cc78c4fb0a62139566131269b",
+      "_type": "request",
+      "parentId": "fld_4330956ea287490cb768c0f0d1766fb9",
+      "name": "Deactivate Bank",
+      "description": "",
+      "url": "http://localhost:3000/api/banks/:id/deactivate",
+      "method": "PATCH",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "modified": 1775053288299,
+      "created": 1775052023725
+    },
+    {
+      "_id": "req_facf086c1e584e82b5f641a6e306ca84",
+      "_type": "request",
+      "parentId": "fld_3a3fe849948845b3836d6032eb088c06",
+      "name": "Create Program",
+      "description": "",
+      "url": "http://localhost:3000/api/programs",
+      "method": "POST",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"LATAM Pass\",\n  \"type\": \"AIRLINE\",\n  \"airlineId\": \"AIRLINE_UUID_HERE\",\n  \"cpfLimit\": 3\n}"
+      },
+      "modified": 1775053296691,
+      "created": 1775052031858
+    },
+    {
+      "_id": "req_db7747aed58b4e74a879a3e5896f8de4",
+      "_type": "request",
+      "parentId": "fld_3a3fe849948845b3836d6032eb088c06",
+      "name": "List Programs",
+      "description": "",
+      "url": "http://localhost:3000/api/programs",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "modified": 1775053299390,
+      "created": 1775052033077
+    },
+    {
+      "_id": "req_3d082fcd4cc841babd424210d6006d95",
+      "_type": "request",
+      "parentId": "fld_3a3fe849948845b3836d6032eb088c06",
+      "name": "Get Program",
+      "description": "",
+      "url": "http://localhost:3000/api/programs/:id",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "modified": 1775053302683,
+      "created": 1775052034516
+    },
+    {
+      "_id": "req_66f7db263e0d4117ac9f6f9d6dc48ccd",
+      "_type": "request",
+      "parentId": "fld_3a3fe849948845b3836d6032eb088c06",
+      "name": "Update Program",
+      "description": "",
+      "url": "http://localhost:3000/api/programs/:id",
+      "method": "PUT",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"LATAM Pass Plus\",\n  \"type\": \"AIRLINE\",\n  \"airlineId\": \"AIRLINE_UUID_HERE\",\n  \"cpfLimit\": 5\n}"
+      },
+      "modified": 1775053306254,
+      "created": 1775052036747
+    },
+    {
+      "_id": "req_84821745eb124170898a4182eb63ca40",
+      "_type": "request",
+      "parentId": "fld_3a3fe849948845b3836d6032eb088c06",
+      "name": "Toggle Active Program",
+      "description": "",
+      "url": "http://localhost:3000/api/programs/:id/toggle-active",
+      "method": "PATCH",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"active\": false\n}"
+      },
+      "modified": 1775053309400,
+      "created": 1775052038859
+    },
+    {
+      "_id": "req_5651a63b605149499311d8e97853bb89",
+      "_type": "request",
+      "parentId": "fld_68596e5c0e7a49b289b1913de3d628ee",
+      "name": "List Loyalty Accounts",
+      "description": "",
+      "url": "http://localhost:3000/api/loyalty-accounts",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "modified": 1775053317658,
+      "created": 1775052045427
+    },
+    {
+      "_id": "req_3a67837aa80547afa33da67d9a4b3e49",
+      "_type": "request",
+      "parentId": "fld_68596e5c0e7a49b289b1913de3d628ee",
+      "name": "Get Loyalty Account",
+      "description": "",
+      "url": "http://localhost:3000/api/loyalty-accounts/:id",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "modified": 1775053320626,
+      "created": 1775052046878
+    },
+    {
+      "_id": "req_42a82f7020fc4d7aa965e1f248fd95fe",
+      "_type": "request",
+      "parentId": "fld_5ee00d72f7fb43b8a417188226c6cd01",
+      "name": "Create Card",
+      "description": "",
+      "url": "http://localhost:3000/api/cards",
+      "method": "POST",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"bankId\": \"BANK_UUID_HERE\",\n  \"name\": \"Nubank Ultravioleta\",\n  \"closingDay\": 10,\n  \"dueDay\": 17,\n  \"creditLimit\": 15000\n}"
+      },
+      "modified": 1775053324082,
+      "created": 1775052054715
+    },
+    {
+      "_id": "req_b5bf697321734f4ba2413339411cdeb3",
+      "_type": "request",
+      "parentId": "fld_5ee00d72f7fb43b8a417188226c6cd01",
+      "name": "List Cards",
+      "description": "",
+      "url": "http://localhost:3000/api/cards",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "modified": 1775053327117,
+      "created": 1775052056218
+    },
+    {
+      "_id": "req_96074863bc5549bbbdba812f72a4f8cc",
+      "_type": "request",
+      "parentId": "fld_5ee00d72f7fb43b8a417188226c6cd01",
+      "name": "Get Card",
+      "description": "",
+      "url": "http://localhost:3000/api/cards/:id",
+      "method": "GET",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "modified": 1775053330353,
+      "created": 1775052057652
+    },
+    {
+      "_id": "req_fbfa831dc0c64648bed7276fe3ef3d75",
+      "_type": "request",
+      "parentId": "fld_5ee00d72f7fb43b8a417188226c6cd01",
+      "name": "Update Card",
+      "description": "",
+      "url": "http://localhost:3000/api/cards/:id",
+      "method": "PUT",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"bankId\": \"BANK_UUID_HERE\",\n  \"name\": \"Nubank Black\",\n  \"closingDay\": 10,\n  \"dueDay\": 17,\n  \"creditLimit\": 20000\n}"
+      },
+      "modified": 1775053338119,
+      "created": 1775052060012
+    },
+    {
+      "_id": "req_6ce2a945dae34a029bc590fe601d7fc3",
+      "_type": "request",
+      "parentId": "fld_5ee00d72f7fb43b8a417188226c6cd01",
+      "name": "Toggle Active Card",
+      "description": "",
+      "url": "http://localhost:3000/api/cards/:id/toggle-active",
+      "method": "PATCH",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJhZWU0MzllOC1iYzdlLTQ3NzUtYmJkNS1kNThiNDI4ZWFkNTAiLCJlbWFpbCI6ImFkbWluQGdlc3Rvcm1pbGhhcy5jb20iLCJyb2xlIjoiQURNSU4iLCJyZWdpc3RyYXRpb25TdGF0dXMiOiJDT01QTEVURSIsImlhdCI6MTc3NTA1MzIyNCwiZXhwIjoxNzc1MDU0MTI0fQ.2VNowP7TwGfcQarB9rePykKWHSN4flAtzTd6OmVsFng"
+        }
+      ],
+      "parameters": [],
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"active\": false\n}"
+      },
+      "modified": 1775053341398,
+      "created": 1775052061854
+    },
+    {
+      "_id": "env_14b51172e2f049d8bef939f372f9bb0d",
+      "_type": "environment",
+      "parentId": "wrk_70fe4c4d43ba4ff29164fafb0ac163b0",
+      "name": "Base Environment",
+      "description": "Base environment variables",
+      "data": {
+        "baseUrl": "http://localhost:3000/api"
+      },
+      "modified": 1775051944060,
+      "created": 1775051944060
+    },
+    {
+      "_id": "env_8d172a2736634ee0bacfb2ea7ee10a05",
+      "_type": "environment",
+      "parentId": "wrk_70fe4c4d43ba4ff29164fafb0ac163b0",
+      "name": "Base Environment",
+      "description": "Base environment variables",
+      "data": {
+        "accessToken": "YOUR_ACCESS_TOKEN"
+      },
+      "modified": 1775051950617,
+      "created": 1775051950617
+    }
+  ]
+}

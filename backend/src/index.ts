@@ -9,6 +9,8 @@ import bankRoutes from "./routes/bank.routes.js";
 import programRoutes from "./routes/program.routes.js";
 import loyaltyAccountRoutes from "./routes/loyalty-account.routes.js";
 import cardRoutes from "./routes/card.routes.js";
+import transactionRoutes from "./routes/transaction.routes.js";
+import bonusPurchaseRoutes from "./routes/bonus-purchase.routes.js";
 
 dotenv.config();
 
@@ -29,12 +31,17 @@ app.use("/api/banks", bankRoutes);
 app.use("/api/programs", programRoutes);
 app.use("/api/loyalty-accounts", loyaltyAccountRoutes);
 app.use("/api/cards", cardRoutes);
+app.use("/api/transactions", transactionRoutes);
+app.use("/api/bonus-purchases", bonusPurchaseRoutes);
 
 // Error handling middleware (must be registered after all routes)
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// Only start listening when not in test environment
+if (process.env.NODE_ENV !== "test") {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
 
 export default app;
