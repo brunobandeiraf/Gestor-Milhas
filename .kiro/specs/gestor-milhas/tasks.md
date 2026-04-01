@@ -88,8 +88,8 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - `PUT /api/users/:id/complete-registration` (Usuário)
     - _Requisitos: 1.2, 1.3, 3.1, 3.2_
 
-- [ ] 5. Catálogos (Admin) — Companhias aéreas, bancos e programas
-  - [ ] 5.1 Implementar services e CRUD de companhias aéreas e bancos
+- [x] 5. Catálogos (Admin) — Companhias aéreas, bancos e programas
+  - [x] 5.1 Implementar services e CRUD de companhias aéreas e bancos
     - CRUD completo com soft delete (ativo/inativo)
     - Verificação de vínculos ativos ao desativar
     - Rotas: `CRUD /api/airlines`, `CRUD /api/banks`
@@ -99,7 +99,7 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - **Propriedade 8: CRUD de catálogos — round trip**
     - **Valida: Requisitos 16.1, 16.2**
 
-  - [ ] 5.3 Implementar service e CRUD de programas de fidelidade
+  - [x] 5.3 Implementar service e CRUD de programas de fidelidade
     - Validação: tipo AIRLINE exige `airlineId`, tipo BANK ignora `airlineId`
     - Rotas: `CRUD /api/programs`
     - _Requisitos: 4.1, 4.2, 4.3, 4.4, 4.5_
@@ -108,11 +108,11 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - **Propriedade 9: CRUD de programas com validação de tipo**
     - **Valida: Requisitos 4.1, 4.2, 4.4**
 
-- [ ] 6. Checkpoint — Autenticação e catálogos
+- [x] 6. Checkpoint — Autenticação e catálogos
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 7. Contas de fidelidade e preço médio
-  - [ ] 7.1 Implementar LoyaltyAccountService
+- [x] 7. Contas de fidelidade e preço médio
+  - [x] 7.1 Implementar LoyaltyAccountService
     - `getByUser(userId)` — listar contas do usuário
     - `credit(accountId, miles, cost, tx)` — creditar milhas com custo
     - `debit(accountId, miles, tx)` — debitar milhas
@@ -120,12 +120,12 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - Criação automática de conta na primeira operação de um programa
     - _Requisitos: 5.1, 5.4_
 
-  - [ ] 7.2 Implementar AveragePriceService
+  - [x] 7.2 Implementar AveragePriceService
     - `recalculate(loyaltyAccountId, tx)` — recalcular preço médio atomicamente
     - Fórmula: `totalCost / (miles / 1000)`, retorna 0 se miles === 0
     - _Requisitos: 5.2, 5.3_
 
-  - [ ] 7.3 Implementar rotas e controller de contas de fidelidade
+  - [x] 7.3 Implementar rotas e controller de contas de fidelidade
     - `GET /api/loyalty-accounts`, `GET /api/loyalty-accounts/:id`
     - _Requisitos: 5.1, 5.4_
 
