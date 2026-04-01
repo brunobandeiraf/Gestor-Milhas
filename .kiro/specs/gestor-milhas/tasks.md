@@ -6,7 +6,7 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
 
 ## Tarefas
 
-- [-] 1. Configuração do projeto e infraestrutura
+- [x] 1. Configuração do projeto e infraestrutura
   - [x] 1.1 Criar estrutura de pastas do monorepo e configurar Docker Compose
     - Criar `docker-compose.yml` com serviços `backend` e `db` (PostgreSQL)
     - Criar `backend/` com `package.json`, `tsconfig.json` (strict mode), e entry point Express
@@ -21,12 +21,12 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - Configurar seed básico (Admin padrão)
     - _Requisitos: 5.1, 7.1, 8.1, 9.1, 10.1, 11.1, 12.1_
 
-  - [ ] 1.3 Criar classes de erro customizadas e middleware de tratamento de erros
+  - [x] 1.3 Criar classes de erro customizadas e middleware de tratamento de erros
     - Implementar `ValidationError`, `AuthenticationError`, `AuthorizationError`, `NotFoundError`, `ConflictError`, `BusinessRuleError`, `InternalError`
     - Implementar middleware Express centralizado de tratamento de erros com formato `ErrorResponse`
     - _Requisitos: 11.6, 11.7, 4.5, 16.4_
 
-  - [ ] 1.4 Criar schemas Zod compartilhados de validação
+  - [x] 1.4 Criar schemas Zod compartilhados de validação
     - Implementar schemas: `loginSchema`, `completeRegistrationSchema`, `programSchema`, `cardSchema`, `clubSchema`, `transactionSchema`, `bonusPurchaseSchema`, `transferSchema`, `issuanceSchema`, `contactFormSchema`
     - Implementar funções de validação de CPF e email
     - Criar middleware de validação Zod para Express
@@ -40,7 +40,7 @@ Implementação incremental do sistema Gestor Milhas, começando pela infraestru
     - **Propriedade 7: Validação de email**
     - **Valida: Requisito 3.6**
 
-- [ ] 2. Checkpoint — Infraestrutura base
+- [x] 2. Checkpoint — Infraestrutura base
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 3. Autenticação e controle de acesso
