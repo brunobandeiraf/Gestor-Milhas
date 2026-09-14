@@ -37,6 +37,7 @@ RUN npm install --omit=dev
 # Copia artefatos compilados e o schema/migrations (necessários em runtime)
 COPY --from=builder /app/dist ./dist
 COPY prisma ./prisma
+COPY prisma.config.ts ./
 
 EXPOSE 3000
 
