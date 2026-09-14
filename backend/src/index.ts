@@ -18,6 +18,7 @@ import scheduleRoutes from "./routes/schedule.routes.js";
 import contactRoutes from "./routes/contact.routes.js";
 import dashboardRoutes from "./routes/dashboard.routes.js";
 import { startScheduleCron } from "./cron/schedule-processor.js";
+import prisma from "./prisma/client.js";
 
 dotenv.config();
 
@@ -27,8 +28,13 @@ const PORT = process.env.PORT || 3000;
 app.use(cors(process.env.CORS_ORIGIN ? { origin: process.env.CORS_ORIGIN, credentials: true } : undefined));
 app.use(express.json());
 
-app.get("/api/health", (_req, res) => {
-  res.json({ status: "ok" });
+app.get("/api/health", async (_req, res) => {
+  try {
+    await prisma.$queryRaw`SELECT 1`;
+    res.json({ status: "ok", database: "ok" });
+  } catch {
+    res.status(503).json({ status: "ok", database: "unreachable" });
+  }
 });
 
 app.use("/api/auth", authRoutes);
