@@ -22,6 +22,12 @@ RUN npx prisma generate
 COPY tsconfig.json ./
 COPY src ./src
 RUN npm run build
+# Em alguns ambientes de build, o gerador do Prisma emite imports relativos
+# com extensão .ts dentro do client gerado; o tsc não reescreve essas
+# extensões ao compilar, o que quebra a resolução de módulos ESM em runtime.
+# Corrige isso após o build.
+RUN find dist/generated/prisma -name "*.js" -exec sed -i 's/\.ts"/.js"/g' {} + && \
+    find dist/generated/prisma -name "*.js" -exec sed -i "s/\.ts'/.js'/g" {} +
 
 # ─────────────────────────────────────────────────────────────────────────────
 
