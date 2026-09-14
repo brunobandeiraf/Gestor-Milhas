@@ -22,11 +22,11 @@ export const TransactionTypeEnum = z.enum([
 // --- Shared refinements ---
 
 const cpfField = z
-  .string({ required_error: "CPF é obrigatório" })
+  .string({ error: "CPF é obrigatório" })
   .refine((val) => isValidCpf(val), { message: "CPF inválido" });
 
 const emailField = z
-  .string({ required_error: "Email é obrigatório" })
+  .string({ error: "Email é obrigatório" })
   .email({ message: "Email inválido" });
 
 // --- Auth Schemas ---
@@ -34,7 +34,7 @@ const emailField = z
 export const loginSchema = z.object({
   email: emailField,
   password: z
-    .string({ required_error: "Senha é obrigatória" })
+    .string({ error: "Senha é obrigatória" })
     .min(1, { message: "Senha é obrigatória" }),
 });
 
@@ -42,34 +42,34 @@ export const loginSchema = z.object({
 
 export const completeRegistrationSchema = z.object({
   fullName: z
-    .string({ required_error: "Nome completo é obrigatório" })
+    .string({ error: "Nome completo é obrigatório" })
     .min(1, { message: "Nome completo é obrigatório" }),
   cpf: cpfField,
   birthDate: z
-    .string({ required_error: "Data de nascimento é obrigatória" })
+    .string({ error: "Data de nascimento é obrigatória" })
     .datetime({ message: "Data de nascimento inválida" }),
   email: emailField,
   phone: z
-    .string({ required_error: "Telefone é obrigatório" })
+    .string({ error: "Telefone é obrigatório" })
     .min(1, { message: "Telefone é obrigatório" }),
   zipCode: z
-    .string({ required_error: "CEP é obrigatório" })
+    .string({ error: "CEP é obrigatório" })
     .min(1, { message: "CEP é obrigatório" }),
   state: z
-    .string({ required_error: "Estado é obrigatório" })
+    .string({ error: "Estado é obrigatório" })
     .min(1, { message: "Estado é obrigatório" }),
   city: z
-    .string({ required_error: "Cidade é obrigatória" })
+    .string({ error: "Cidade é obrigatória" })
     .min(1, { message: "Cidade é obrigatória" }),
   street: z
-    .string({ required_error: "Rua é obrigatória" })
+    .string({ error: "Rua é obrigatória" })
     .min(1, { message: "Rua é obrigatória" }),
   number: z
-    .string({ required_error: "Número é obrigatório" })
+    .string({ error: "Número é obrigatório" })
     .min(1, { message: "Número é obrigatório" }),
   complement: z.string().optional(),
   neighborhood: z
-    .string({ required_error: "Bairro é obrigatório" })
+    .string({ error: "Bairro é obrigatório" })
     .min(1, { message: "Bairro é obrigatório" }),
 });
 
@@ -79,7 +79,7 @@ export const completeRegistrationSchema = z.object({
 export const programSchema = z
   .object({
     name: z
-      .string({ required_error: "Nome é obrigatório" })
+      .string({ error: "Nome é obrigatório" })
       .min(1, { message: "Nome é obrigatório" }),
     type: ProgramTypeEnum,
     airlineId: z.string().uuid({ message: "ID da companhia aérea inválido" }).optional().nullable(),
@@ -103,23 +103,23 @@ export const programSchema = z
 
 export const cardSchema = z.object({
   bankId: z
-    .string({ required_error: "Banco é obrigatório" })
+    .string({ error: "Banco é obrigatório" })
     .uuid({ message: "ID do banco inválido" }),
   name: z
-    .string({ required_error: "Nome do cartão é obrigatório" })
+    .string({ error: "Nome do cartão é obrigatório" })
     .min(1, { message: "Nome do cartão é obrigatório" }),
   closingDay: z
-    .number({ required_error: "Dia de fechamento é obrigatório" })
+    .number({ error: "Dia de fechamento é obrigatório" })
     .int()
     .min(1, { message: "Dia de fechamento deve ser entre 1 e 31" })
     .max(31, { message: "Dia de fechamento deve ser entre 1 e 31" }),
   dueDay: z
-    .number({ required_error: "Dia de vencimento é obrigatório" })
+    .number({ error: "Dia de vencimento é obrigatório" })
     .int()
     .min(1, { message: "Dia de vencimento deve ser entre 1 e 31" })
     .max(31, { message: "Dia de vencimento deve ser entre 1 e 31" }),
   creditLimit: z
-    .number({ required_error: "Limite de crédito é obrigatório" })
+    .number({ error: "Limite de crédito é obrigatório" })
     .min(0, { message: "Limite de crédito deve ser >= 0" }),
   annualFee: z.number().min(0, { message: "Anuidade deve ser >= 0" }).optional(),
   active: z.boolean().optional(),
@@ -137,26 +137,26 @@ export const cardSchema = z.object({
 
 export const clubSchema = z.object({
   programId: z
-    .string({ required_error: "Programa é obrigatório" })
+    .string({ error: "Programa é obrigatório" })
     .uuid({ message: "ID do programa inválido" }),
   plan: z
-    .string({ required_error: "Plano é obrigatório" })
+    .string({ error: "Plano é obrigatório" })
     .min(1, { message: "Plano é obrigatório" }),
   milesPerMonth: z
-    .number({ required_error: "Milhas por mês é obrigatório" })
+    .number({ error: "Milhas por mês é obrigatório" })
     .int()
     .min(1, { message: "Milhas por mês deve ser >= 1" }),
   monthlyFee: z
-    .number({ required_error: "Valor mensal é obrigatório" })
+    .number({ error: "Valor mensal é obrigatório" })
     .min(0, { message: "Valor mensal deve ser >= 0" }),
   startDate: z
-    .string({ required_error: "Data de início é obrigatória" })
+    .string({ error: "Data de início é obrigatória" })
     .datetime({ message: "Data de início inválida" }),
   endDate: z
-    .string({ required_error: "Data de fim é obrigatória" })
+    .string({ error: "Data de fim é obrigatória" })
     .datetime({ message: "Data de fim inválida" }),
   chargeDay: z
-    .number({ required_error: "Dia de cobrança é obrigatório" })
+    .number({ error: "Dia de cobrança é obrigatório" })
     .int()
     .min(1, { message: "Dia de cobrança deve ser entre 1 e 31" })
     .max(31, { message: "Dia de cobrança deve ser entre 1 e 31" }),
@@ -168,17 +168,17 @@ export const clubSchema = z.object({
 export const transactionSchema = z
   .object({
     programId: z
-      .string({ required_error: "Programa é obrigatório" })
+      .string({ error: "Programa é obrigatório" })
       .uuid({ message: "ID do programa inválido" }),
     type: TransactionTypeEnum,
     miles: z
-      .number({ required_error: "Quantidade de milhas é obrigatória" })
+      .number({ error: "Quantidade de milhas é obrigatória" })
       .int()
       .min(1, { message: "Quantidade de milhas deve ser >= 1" }),
     totalCost: z.number().min(0, { message: "Valor total deve ser >= 0" }).optional(),
     costPerK: z.number().min(0, { message: "Valor por milheiro deve ser >= 0" }).optional(),
     date: z
-      .string({ required_error: "Data é obrigatória" })
+      .string({ error: "Data é obrigatória" })
       .datetime({ message: "Data inválida" }),
     paymentMethod: PaymentMethodEnum,
   })
@@ -195,28 +195,28 @@ export const transactionSchema = z
 
 export const bonusPurchaseSchema = z.object({
   programId: z
-    .string({ required_error: "Programa é obrigatório" })
+    .string({ error: "Programa é obrigatório" })
     .uuid({ message: "ID do programa inválido" }),
   product: z
-    .string({ required_error: "Produto é obrigatório" })
+    .string({ error: "Produto é obrigatório" })
     .min(1, { message: "Produto é obrigatório" }),
   store: z
-    .string({ required_error: "Loja é obrigatória" })
+    .string({ error: "Loja é obrigatória" })
     .min(1, { message: "Loja é obrigatória" }),
   pointsPerReal: z
-    .number({ required_error: "Pontos por real é obrigatório" })
+    .number({ error: "Pontos por real é obrigatório" })
     .min(0, { message: "Pontos por real deve ser >= 0" }),
   totalValue: z
-    .number({ required_error: "Valor total é obrigatório" })
+    .number({ error: "Valor total é obrigatório" })
     .min(0, { message: "Valor total deve ser >= 0" }),
   purchaseDate: z
-    .string({ required_error: "Data da compra é obrigatória" })
+    .string({ error: "Data da compra é obrigatória" })
     .datetime({ message: "Data da compra inválida" }),
   productReceiveDate: z
-    .string({ required_error: "Data de recebimento do produto é obrigatória" })
+    .string({ error: "Data de recebimento do produto é obrigatória" })
     .datetime({ message: "Data de recebimento do produto inválida" }),
   pointsReceiveDate: z
-    .string({ required_error: "Data de recebimento dos pontos é obrigatória" })
+    .string({ error: "Data de recebimento dos pontos é obrigatória" })
     .datetime({ message: "Data de recebimento dos pontos inválida" }),
 });
 
@@ -224,13 +224,13 @@ export const bonusPurchaseSchema = z.object({
 
 export const transferSchema = z.object({
   originProgramId: z
-    .string({ required_error: "Programa de origem é obrigatório" })
+    .string({ error: "Programa de origem é obrigatório" })
     .uuid({ message: "ID do programa de origem inválido" }),
   destinationProgramId: z
-    .string({ required_error: "Programa de destino é obrigatório" })
+    .string({ error: "Programa de destino é obrigatório" })
     .uuid({ message: "ID do programa de destino inválido" }),
   miles: z
-    .number({ required_error: "Quantidade de milhas é obrigatória" })
+    .number({ error: "Quantidade de milhas é obrigatória" })
     .int()
     .min(1, { message: "Quantidade de milhas deve ser >= 1" }),
   bonusPercentage: z
@@ -239,10 +239,10 @@ export const transferSchema = z.object({
     .optional()
     .default(0),
   transferDate: z
-    .string({ required_error: "Data da transferência é obrigatória" })
+    .string({ error: "Data da transferência é obrigatória" })
     .datetime({ message: "Data da transferência inválida" }),
   receiveDate: z
-    .string({ required_error: "Data de recebimento é obrigatória" })
+    .string({ error: "Data de recebimento é obrigatória" })
     .datetime({ message: "Data de recebimento inválida" }),
   bonusReceiveDate: z
     .string()
@@ -268,27 +268,27 @@ export const transferSchema = z.object({
 
 export const issuanceSchema = z.object({
   programId: z
-    .string({ required_error: "Programa é obrigatório" })
+    .string({ error: "Programa é obrigatório" })
     .uuid({ message: "ID do programa inválido" }),
   date: z
-    .string({ required_error: "Data é obrigatória" })
+    .string({ error: "Data é obrigatória" })
     .datetime({ message: "Data inválida" }),
   cpfUsed: z
-    .string({ required_error: "CPF utilizado é obrigatório" })
+    .string({ error: "CPF utilizado é obrigatório" })
     .min(1, { message: "CPF utilizado é obrigatório" }),
   milesUsed: z
-    .number({ required_error: "Milhas utilizadas é obrigatório" })
+    .number({ error: "Milhas utilizadas é obrigatório" })
     .int()
     .min(1, { message: "Milhas utilizadas deve ser >= 1" }),
   cashPaid: z
-    .number({ required_error: "Valor pago em dinheiro é obrigatório" })
+    .number({ error: "Valor pago em dinheiro é obrigatório" })
     .min(0, { message: "Valor pago em dinheiro deve ser >= 0" }),
   locator: z.string().optional().nullable(),
   passenger: z
-    .string({ required_error: "Passageiro é obrigatório" })
+    .string({ error: "Passageiro é obrigatório" })
     .min(1, { message: "Passageiro é obrigatório" }),
   realTicketValue: z
-    .number({ required_error: "Valor real da passagem é obrigatório" })
+    .number({ error: "Valor real da passagem é obrigatório" })
     .min(0, { message: "Valor real da passagem deve ser >= 0" }),
   notes: z.string().optional().nullable(),
   paymentMethod: PaymentMethodEnum,
@@ -298,11 +298,11 @@ export const issuanceSchema = z.object({
 
 export const contactFormSchema = z.object({
   name: z
-    .string({ required_error: "Nome é obrigatório" })
+    .string({ error: "Nome é obrigatório" })
     .min(1, { message: "Nome é obrigatório" }),
   email: emailField,
   message: z
-    .string({ required_error: "Mensagem é obrigatória" })
+    .string({ error: "Mensagem é obrigatória" })
     .min(1, { message: "Mensagem é obrigatória" }),
 });
 
