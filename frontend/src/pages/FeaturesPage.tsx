@@ -84,36 +84,40 @@ const features = [
 
 const FeaturesPage = () => {
   return (
-    <section className="py-16 px-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">
+    <>
+      <section className="py-12 px-4 bg-gradient-to-br from-blue-600 to-blue-800">
+        <div className="max-w-6xl mx-auto text-center">
+          <h1 className="text-3xl font-bold text-white mb-4">
             Funcionalidades
           </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-blue-100 max-w-2xl mx-auto">
             Conheça tudo o que o Gestor Milhas oferece para você maximizar o
             valor das suas milhas e pontos.
           </p>
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature) => (
-            <Card key={feature.title}>
-              <CardHeader>
-                <div className="h-10 w-10 rounded-lg bg-blue-100 flex items-center justify-center mb-2">
-                  <feature.icon className="h-5 w-5 text-blue-600" />
-                </div>
-                <CardTitle>{feature.title}</CardTitle>
-                <CardDescription>{feature.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-600">{feature.details}</p>
-              </CardContent>
-            </Card>
-          ))}
+      <section className="py-16 px-4 bg-blue-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map((feature) => (
+              <Card key={feature.title}>
+                <CardHeader>
+                  <div className="h-10 w-10 rounded-lg bg-blue-100 flex items-center justify-center mb-2">
+                    <feature.icon className="h-5 w-5 text-blue-600" />
+                  </div>
+                  <CardTitle>{feature.title}</CardTitle>
+                  <CardDescription>{feature.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-600">{feature.details}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

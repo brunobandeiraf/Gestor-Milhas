@@ -11,6 +11,8 @@ import api from "../services/api";
 import { Input } from "../components/ui/Input";
 import { Label } from "../components/ui/Label";
 import { Button } from "../components/ui/Button";
+import { PhoneInput } from "../components/ui/PhoneInput";
+import { CpfInput } from "../components/ui/CpfInput";
 import CepAutoComplete from "../components/CepAutoComplete";
 import { Plane } from "lucide-react";
 import axios from "axios";
@@ -73,11 +75,19 @@ const CompleteRegistrationPage = () => {
         birthDate: new Date(data.birthDate).toISOString(),
       };
       await api.put(`/users/${user.userId}/complete-registration`, payload);
-      // Re-login to get updated token with COMPLETE status
-      logout();
-      navigate("/login");
+
+      // Refresh the token to get updated registrationStatus
+      const refreshToken = localStorage.getItem("refreshToken");
+      if (refreshToken) {
+        const response = await api.post("/auth/refresh", { refreshToken });
+        localStorage.setItem("accessToken", response.data.accessToken);
+      }
+
+      navigate("/dashboard");
     } catch (err) {
-      if (axios.isAxiosError(err) && err.response?.data?.message) {
+      if (axios.isAxiosError(err) && err.response?.data?.error?.message) {
+        setError(err.response.data.error.message);
+      } else if (axios.isAxiosError(err) && err.response?.data?.message) {
         setError(err.response.data.message);
       } else {
         setError("Erro ao completar cadastro. Tente novamente.");
@@ -123,7 +133,11 @@ const CompleteRegistrationPage = () => {
 
               <div className="space-y-1.5">
                 <Label htmlFor="cpf">CPF</Label>
-                <Input id="cpf" placeholder="00000000000" maxLength={14} {...register("cpf")} />
+                <CpfInput
+                  id="cpf"
+                  value={watch("cpf") || ""}
+                  onChange={(val) => setValue("cpf", val, { shouldValidate: true })}
+                />
                 {errors.cpf && <p className="text-red-600 text-xs">{errors.cpf.message}</p>}
               </div>
 
@@ -135,13 +149,17 @@ const CompleteRegistrationPage = () => {
 
               <div className="space-y-1.5">
                 <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="seu@email.com" {...register("email")} />
-                {errors.email && <p className="text-red-600 text-xs">{errors.email.message}</p>}
+                <Input id="email" type="email" disabled value={getUser()?.email || ""} className="bg-gray-100 cursor-not-allowed" />
+                <input type="hidden" {...register("email")} />
               </div>
 
               <div className="space-y-1.5">
                 <Label htmlFor="phone">Telefone</Label>
-                <Input id="phone" placeholder="(00) 00000-0000" {...register("phone")} />
+                <PhoneInput
+                  id="phone"
+                  value={watch("phone") || ""}
+                  onChange={(val) => setValue("phone", val, { shouldValidate: true })}
+                />
                 {errors.phone && <p className="text-red-600 text-xs">{errors.phone.message}</p>}
               </div>
 

@@ -24,6 +24,8 @@ type ProgramFormData = z.infer<typeof programSchema>;
 
 const AdminProgramsPage = () => {
   const [showForm, setShowForm] = useState(false);
+  const [searchName, setSearchName] = useState("");
+  const [filterType, setFilterType] = useState<"" | "BANK" | "AIRLINE">("");
   const { data, isLoading, error } = useProgramsQuery();
   const { data: airlinesData } = useAirlinesQuery();
   const createMutation = useCreateProgramMutation();
@@ -123,38 +125,76 @@ const AdminProgramsPage = () => {
       )}
 
       <Card>
-        <CardHeader><CardTitle>Programas Cadastrados</CardTitle></CardHeader>
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <CardTitle>Programas Cadastrados</CardTitle>
+            <span className="text-sm text-gray-500">
+              {programs.filter((p) => {
+                const matchName = !searchName || p.name.toLowerCase().includes(searchName.toLowerCase());
+                const matchType = !filterType || p.type === filterType;
+                return matchName && matchType;
+              }).length} programa(s)
+            </span>
+          </div>
+          <div className="mt-3 flex gap-3">
+            <Input
+              placeholder="Pesquisar por nome..."
+              value={searchName}
+              onChange={(e) => setSearchName(e.target.value)}
+              className="flex-1"
+            />
+            <select
+              value={filterType}
+              onChange={(e) => setFilterType(e.target.value as "" | "BANK" | "AIRLINE")}
+              className="h-10 rounded-md border border-gray-300 bg-white px-3 py-2 text-sm"
+            >
+              <option value="">Todos os tipos</option>
+              <option value="BANK">Banco</option>
+              <option value="AIRLINE">Companhia Aérea</option>
+            </select>
+          </div>
+        </CardHeader>
         <CardContent>
-          {programs.length > 0 ? (
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b text-left text-gray-500">
-                  <th className="pb-2">Nome</th>
-                  <th className="pb-2">Tipo</th>
-                  <th className="pb-2">Companhia</th>
-                  <th className="pb-2">Limite CPF</th>
-                  <th className="pb-2">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {programs.map((p) => (
-                  <tr key={p.id} className="border-b last:border-0">
-                    <td className="py-2">{p.name}</td>
-                    <td className="py-2">{p.type === "AIRLINE" ? "Aéreo" : "Banco"}</td>
-                    <td className="py-2">{p.airline?.name ?? "—"}</td>
-                    <td className="py-2">{p.cpfLimit ?? "—"}</td>
-                    <td className="py-2">
-                      <span className={p.active ? "text-green-600" : "text-red-500"}>
-                        {p.active ? "Ativo" : "Inativo"}
-                      </span>
-                    </td>
+          {(() => {
+            const filtered = programs.filter((p) => {
+              const matchName = !searchName || p.name.toLowerCase().includes(searchName.toLowerCase());
+              const matchType = !filterType || p.type === filterType;
+              return matchName && matchType;
+            });
+
+            return filtered.length > 0 ? (
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b text-left text-gray-500">
+                    <th className="pb-2">Nome</th>
+                    <th className="pb-2">Tipo</th>
+                    <th className="pb-2">Companhia</th>
+                    <th className="pb-2">Limite CPF</th>
+                    <th className="pb-2">Status</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          ) : (
-            <p className="text-gray-500">Nenhum programa cadastrado.</p>
-          )}
+                </thead>
+                <tbody>
+                  {filtered.map((p) => (
+                    <tr key={p.id} className="border-b last:border-0">
+                      <td className="py-2">{p.name}</td>
+                      <td className="py-2">{p.type === "AIRLINE" ? "Aéreo" : "Banco"}</td>
+                      <td className="py-2">{p.airline?.name ?? "—"}</td>
+                      <td className="py-2">{p.cpfLimit ?? "—"}</td>
+                      <td className="py-2">
+                        <span className={p.active ? "text-green-600" : "text-red-500"}>
+                          {p.active ? "Ativo" : "Inativo"}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p className="text-gray-500">
+                {searchName || filterType ? "Nenhum programa encontrado para os filtros aplicados." : "Nenhum programa cadastrado."}
+              </p>
+            );
+          })()}
         </CardContent>
       </Card>
     </div>

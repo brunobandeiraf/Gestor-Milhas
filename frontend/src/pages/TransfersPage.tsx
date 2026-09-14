@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTransfersQuery, useCreateTransferMutation } from "../hooks/useTransfersQuery";
 import { useProgramsQuery } from "../hooks/useProgramsQuery";
-import { transferSchema, type TransferFormData } from "../utils/schemas";
+import { transferSchema, type TransferFormData, type TransferFormInput } from "../utils/schemas";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card";
 import { Button } from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
@@ -24,7 +24,7 @@ const TransfersPage = () => {
     reset,
     watch,
     formState: { errors },
-  } = useForm<TransferFormData>({
+  } = useForm<TransferFormInput, unknown, TransferFormData>({
     resolver: zodResolver(transferSchema),
     defaultValues: { cartPurchase: false, boomerang: false, bonusPercentage: 0 },
   });

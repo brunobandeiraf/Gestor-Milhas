@@ -5,6 +5,7 @@ const { Decimal } = Prisma;
 
 export interface AccountSummary {
   programName: string;
+  programType: string;
   miles: number;
   averagePrice: number;
   totalCost: number;
@@ -38,6 +39,7 @@ export interface UserSummary {
   email: string;
   fullName: string | null;
   totalMiles: number;
+  totalPoints: number;
   totalInvested: number;
   totalSaved: number;
 }
@@ -45,6 +47,8 @@ export interface UserSummary {
 export interface AdminDashboard {
   managedUsersSavings: number;
   globalSavings: number;
+  totalMilesAll: number;
+  totalPointsAll: number;
   users: UserSummary[];
 }
 
@@ -60,6 +64,7 @@ async function getAccountSummaries(userId: string): Promise<AccountSummary[]> {
 
   return accounts.map((a) => ({
     programName: a.program.name,
+    programType: a.program.type,
     miles: a.miles,
     averagePrice: a.averagePrice.toNumber(),
     totalCost: a.totalCost.toNumber(),
@@ -144,20 +149,26 @@ export async function getAdminDashboard(
   // Build user summaries
   const users: UserSummary[] = [];
   let managedUsersSavings = 0;
+  let totalMilesAll = 0;
+  let totalPointsAll = 0;
 
   for (const user of managedUsers) {
     const accounts = await getAccountSummaries(user.id);
-    const totalMiles = accounts.reduce((sum, a) => sum + a.miles, 0);
+    const totalMiles = accounts.filter((a) => a.programType === "AIRLINE").reduce((sum, a) => sum + a.miles, 0);
+    const totalPoints = accounts.filter((a) => a.programType === "BANK").reduce((sum, a) => sum + a.miles, 0);
     const totalInvested = accounts.reduce((sum, a) => sum + a.totalCost, 0);
     const totalSaved = await getTotalSaved(user.id);
 
     managedUsersSavings += totalSaved;
+    totalMilesAll += totalMiles;
+    totalPointsAll += totalPoints;
 
     users.push({
       id: user.id,
       email: user.email,
       fullName: user.fullName,
       totalMiles,
+      totalPoints,
       totalInvested,
       totalSaved,
     });
@@ -169,5 +180,5 @@ export async function getAdminDashboard(
   });
   const globalSavings = globalResult._sum.savings?.toNumber() ?? 0;
 
-  return { managedUsersSavings, globalSavings, users };
+  return { managedUsersSavings, globalSavings, totalMilesAll, totalPointsAll, users };
 }

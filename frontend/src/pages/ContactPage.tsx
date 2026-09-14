@@ -32,16 +32,20 @@ const ContactPage = () => {
   };
 
   return (
-    <section className="py-16 px-4">
-      <div className="max-w-lg mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">Contato</h1>
-          <p className="text-gray-600">
+    <>
+      <section className="py-12 px-4 bg-gradient-to-br from-blue-600 to-blue-800">
+        <div className="max-w-lg mx-auto text-center">
+          <h1 className="text-3xl font-bold text-white mb-4">Contato</h1>
+          <p className="text-blue-100">
             Tem alguma dúvida ou sugestão? Envie sua mensagem.
           </p>
         </div>
+      </section>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <section className="py-16 px-4 bg-blue-50">
+        <div className="max-w-lg mx-auto">
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
           <div>
             <Label htmlFor="name">Nome</Label>
             <Input
@@ -100,6 +104,7 @@ const ContactPage = () => {
         </form>
       </div>
     </section>
+    </>
   );
 };
 

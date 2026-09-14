@@ -71,3 +71,6 @@ gestor-milhas/
 - Fórmula preço médio: `valor_total / (milhas / 1000)`
 - Economia: `valor_real_passagem - custo_total`
 - Custo total emissão: `(milhas/1000 * preço_médio) + valor_dinheiro`
+- Criação de usuário pelo Admin exige: nome completo, email e senha
+- Admin pode editar dados de qualquer usuário gerenciado, mesmo com status PENDING
+- Admin pode validar (completar cadastro) de um usuário diretamente, sem o usuário precisar fazer

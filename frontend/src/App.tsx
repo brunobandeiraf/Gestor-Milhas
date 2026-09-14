@@ -6,6 +6,7 @@ import LandingPage from "./pages/LandingPage";
 import FeaturesPage from "./pages/FeaturesPage";
 import ContactPage from "./pages/ContactPage";
 import LoginPage from "./pages/LoginPage";
+import ActivateAccountPage from "./pages/ActivateAccountPage";
 import CompleteRegistrationPage from "./pages/CompleteRegistrationPage";
 import DashboardPage from "./pages/DashboardPage";
 import LoyaltyAccountsPage from "./pages/LoyaltyAccountsPage";
@@ -30,6 +31,7 @@ export const AppRoutes = () => {
         <Route path="/funcionalidades" element={<FeaturesPage />} />
         <Route path="/contato" element={<ContactPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/ativar-conta/:token" element={<ActivateAccountPage />} />
       </Route>
 
       {/* Protected routes — allows PENDING users */}

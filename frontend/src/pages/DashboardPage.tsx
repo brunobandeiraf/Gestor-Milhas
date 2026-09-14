@@ -1,8 +1,10 @@
 import { useUserDashboardQuery } from "../hooks/useUserDashboardQuery";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card";
 
-const formatCurrency = (value: number | string) =>
-  Number(value).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+const formatCurrency = (value: number | string | null | undefined) => {
+  const num = Number(value);
+  return isNaN(num) ? "R$ 0,00" : num.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+};
 
 const DashboardPage = () => {
   const { data, isLoading, error } = useUserDashboardQuery();
@@ -18,6 +20,7 @@ const DashboardPage = () => {
       totalCost: string | number;
     }>;
     totalInvested: string | number;
+    totalSaved: string | number;
     totalSavings: string | number;
     upcomingSchedules: Array<{
       id: string;
@@ -49,7 +52,7 @@ const DashboardPage = () => {
           </CardHeader>
           <CardContent>
             <p className="text-2xl font-bold text-green-600">
-              {formatCurrency(dashboard.totalSavings)}
+              {formatCurrency(dashboard.totalSaved ?? dashboard.totalSavings)}
             </p>
           </CardContent>
         </Card>

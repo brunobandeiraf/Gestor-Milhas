@@ -52,6 +52,7 @@ export const cardSchema = z.object({
 });
 
 export type CardFormData = z.infer<typeof cardSchema>;
+export type CardFormInput = z.input<typeof cardSchema>;
 
 // --- Club ---
 
@@ -116,6 +117,7 @@ export const transferSchema = z.object({
 });
 
 export type TransferFormData = z.infer<typeof transferSchema>;
+export type TransferFormInput = z.input<typeof transferSchema>;
 
 // --- Issuance ---
 

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useCardsQuery, useCreateCardMutation } from "../hooks/useCardsQuery";
 import { useBanksQuery } from "../hooks/useBanksQuery";
-import { cardSchema, type CardFormData } from "../utils/schemas";
+import { cardSchema, type CardFormData, type CardFormInput } from "../utils/schemas";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card";
 import { Button } from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
@@ -23,7 +23,7 @@ const CardsPage = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<CardFormData>({ resolver: zodResolver(cardSchema) });
+  } = useForm<CardFormInput, unknown, CardFormData>({ resolver: zodResolver(cardSchema) });
 
   const onSubmit = (formData: CardFormData) => {
     createMutation.mutate(formData, {

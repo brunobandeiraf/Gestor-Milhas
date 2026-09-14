@@ -46,12 +46,12 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="py-16 flex items-center justify-center">
+    <div className="py-16 flex items-center justify-center bg-blue-600 -mx-4 -mb-6 min-h-[calc(100vh-4rem)]">
       <div className="w-full max-w-md mx-auto px-4">
         <div className="text-center mb-8">
-          <Plane className="h-10 w-10 text-blue-600 mx-auto mb-3" />
-          <h1 className="text-2xl font-bold text-gray-900">Entrar no Gestor Milhas</h1>
-          <p className="text-gray-600 mt-1 text-sm">Acesse sua conta para gerenciar suas milhas</p>
+          <Plane className="h-10 w-10 text-white mx-auto mb-3" />
+          <h1 className="text-2xl font-bold text-white">Entrar no Gestor Milhas</h1>
+          <p className="text-blue-100 mt-1 text-sm">Acesse sua conta para gerenciar suas milhas</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
